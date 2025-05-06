@@ -33,11 +33,14 @@ class AuthViewController: UIViewController {
         }
     }
     
-    override func viewDidLoad() {
+    override func viewDidLoad() { //исполняется при создании экрана
         super.viewDidLoad()
 
         incorrectEmailLabel.isHidden = true
         incorrectPasswordLabel.isHidden = true
+        
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
         
         authButton.addTarget(self, action: #selector(authButtonTapped), for: .touchUpInside)
         changeAuth.addTarget(self, action: #selector(changeAuthTapped), for: .touchUpInside)
@@ -45,6 +48,10 @@ class AuthViewController: UIViewController {
     
     @objc func authButtonTapped() { // кнопка регистрации иои входа нажата
         if isValidEmail() && isValidPassword() {
+            
+            incorrectEmailLabel.isHidden = true
+            incorrectPasswordLabel.isHidden = true
+            
             guard let email = emailTextField.text, let password = passwordTextField.text else {
                 return
             }
@@ -56,6 +63,7 @@ class AuthViewController: UIViewController {
                         return
                     } else if let result = result {
                         userID = result.user.uid
+                        
                     }
                 }
             } else {
@@ -67,21 +75,28 @@ class AuthViewController: UIViewController {
                     }
                 }
             }
+        } else {
+            if !isValidEmail() {
+                incorrectEmailLabel.isHidden = false
+            } else {
+                incorrectEmailLabel.isHidden = true
+            }
             
-        } else if !isValidEmail() {
-            incorrectEmailLabel.isHidden = false
-        } else if !isValidPassword() {
-            incorrectPasswordLabel.isHidden = false
+            if !isValidPassword() {
+                incorrectPasswordLabel.isHidden = false
+            } else {
+                incorrectPasswordLabel.isHidden = true
+            }
         }
     }
     
-    @objc func changeAuthTapped() {
+    @objc func changeAuthTapped() { // поменял на регистрацию
         signUp.toggle()
     }
     
 
     func isValidEmail() -> Bool { // проверка на корректность эл почты
-        if let email = emailTextField.text, email.isEmpty {
+        if let email = emailTextField.text, !email.isEmpty {
             let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
             return email.range(of: emailRegex, options: .regularExpression, range: nil, locale: nil) != nil
         } else {
@@ -90,7 +105,7 @@ class AuthViewController: UIViewController {
     }
     
     func isValidPassword() -> Bool { // проверка на корректность пароля
-        guard let password = passwordTextField.text, password.isEmpty else {
+        guard let password = passwordTextField.text, !password.isEmpty else {
             return false
         }
         guard password.count >= 6 else {
@@ -100,11 +115,18 @@ class AuthViewController: UIViewController {
         return true
     }
     
-    func showAlert(title: String, message: String) {
+    func showAlert(title: String, message: String) { // показывает ошибку
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .default)
         alert.addAction(okAction)
         self.present(alert, animated: true)
     }
 
+}
+
+extension AuthViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool { // скрывает клавиатуру
+        textField.resignFirstResponder()
+        return true
+    }
 }
