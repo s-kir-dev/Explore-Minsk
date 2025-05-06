@@ -22,7 +22,7 @@ class AuthViewController: UIViewController {
     
     var signUp: Bool = false {
         willSet {
-            if newValue {
+            if newValue { //если переключил на регистрацию
                 authButton.setTitle("Sign up", for: .normal)
                 withoutAccountLabel.isHidden = true
                 changeAuth.isHidden = true
@@ -39,13 +39,17 @@ class AuthViewController: UIViewController {
         incorrectPasswordLabel.isHidden = true
     }
     
-    @objc func authButtonTapped() {
+    @objc func authButtonTapped() { // кнопка регистрации иои входа нажата
         if isValidEmail() && isValidPassword() {
             guard let email = emailTextField.text, let password = passwordTextField.text else {
                 return
             }
             
-            
+            if signUp {
+                
+            } else {
+                
+            }
             
         } else if !isValidEmail() {
             incorrectEmailLabel.isHidden = false
@@ -55,7 +59,7 @@ class AuthViewController: UIViewController {
     }
     
 
-    func isValidEmail() -> Bool {
+    func isValidEmail() -> Bool { // проверка на корректность эл почты
         if let email = emailTextField.text, email.isEmpty {
             let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
             return email.range(of: emailRegex, options: .regularExpression, range: nil, locale: nil) != nil
@@ -64,7 +68,7 @@ class AuthViewController: UIViewController {
         }
     }
     
-    func isValidPassword() -> Bool {
+    func isValidPassword() -> Bool { // проверка на корректность пароля
         guard let password = passwordTextField.text, password.isEmpty else {
             return false
         }
