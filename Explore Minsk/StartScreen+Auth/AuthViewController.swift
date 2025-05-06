@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class AuthViewController: UIViewController {
 
@@ -37,6 +38,9 @@ class AuthViewController: UIViewController {
 
         incorrectEmailLabel.isHidden = true
         incorrectPasswordLabel.isHidden = true
+        
+        authButton.addTarget(self, action: #selector(authButtonTapped), for: .touchUpInside)
+        changeAuth.addTarget(self, action: #selector(changeAuthTapped), for: .touchUpInside)
     }
     
     @objc func authButtonTapped() { // кнопка регистрации иои входа нажата
@@ -46,9 +50,22 @@ class AuthViewController: UIViewController {
             }
             
             if signUp {
-                
+                Auth.auth().createUser(withEmail: email, password: password) { result, error in
+                    if let error = error {
+                        print("Error creating user: \(error)")
+                        return
+                    } else if let result = result {
+                        userID = result.user.uid
+                    }
+                }
             } else {
-                
+                Auth.auth().signIn(withEmail: email, password: password) { result, error in
+                    if let error = error {
+                        print("Error sign in: \(error)")
+                        self.showAlert(title: "Ошибка!", message: "Неправильно введены данные или такого аккаунта не существует. Хотите зарегистрироваться?")
+                        return
+                    }
+                }
             }
             
         } else if !isValidEmail() {
@@ -56,6 +73,10 @@ class AuthViewController: UIViewController {
         } else if !isValidPassword() {
             incorrectPasswordLabel.isHidden = false
         }
+    }
+    
+    @objc func changeAuthTapped() {
+        signUp.toggle()
     }
     
 
@@ -77,6 +98,13 @@ class AuthViewController: UIViewController {
         }
             
         return true
+    }
+    
+    func showAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default)
+        alert.addAction(okAction)
+        self.present(alert, animated: true)
     }
 
 }
