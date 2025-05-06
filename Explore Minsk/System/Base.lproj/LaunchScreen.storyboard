@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="EHf-IW-A2E">
+            <objects>
+                <viewController id="01J-lp-oVM" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="startScreen" translatesAutoresizingMaskIntoConstraints="NO" id="3Lg-q3-FDI">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MINSK" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="37" translatesAutoresizingMaskIntoConstraints="NO" id="Kgi-dJ-7S3">
+                                <rect key="frame" x="83" y="118" width="227" height="87"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="87" id="C5d-v8-y06"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="MalayalamSangamMN-Bold" family="Malayalam Sangam MN" pointSize="73"/>
+                                <color key="textColor" red="0.18823529410000001" green="0.69019607839999997" blue="0.78039215689999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="Wif-BT-iBC">
+                                <rect key="frame" x="16" y="409" width="225" height="108"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="225" id="Kgb-u2-Pio"/>
+                                    <constraint firstAttribute="height" constant="108" id="nnS-qE-Hbs"/>
+                                </constraints>
+                                <string key="text">Luxurious 
+Vacation</string>
+                                <fontDescription key="fontDescription" name="MalayalamSangamMN-Bold" family="Malayalam Sangam MN" pointSize="39"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Plan your" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="H5H-nm-i4e">
+                                <rect key="frame" x="16" y="335" width="130" height="66"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="66" id="gPb-pE-fMI"/>
+                                    <constraint firstAttribute="width" constant="130" id="lot-Z5-N2j"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="MalayalamSangamMN" family="Malayalam Sangam MN" pointSize="32"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Wif-BT-iBC" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="40m-vP-QvT"/>
+                            <constraint firstItem="Kgi-dJ-7S3" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="FR8-Mn-usc"/>
+                            <constraint firstItem="3Lg-q3-FDI" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Hyp-Q6-3Oa"/>
+                            <constraint firstItem="H5H-nm-i4e" firstAttribute="top" secondItem="Kgi-dJ-7S3" secondAttribute="bottom" constant="130" id="JVR-lZ-Ype"/>
+                            <constraint firstItem="H5H-nm-i4e" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="LLf-mg-uR1"/>
+                            <constraint firstItem="3Lg-q3-FDI" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="Tge-TG-6VD"/>
+                            <constraint firstAttribute="bottom" secondItem="3Lg-q3-FDI" secondAttribute="bottom" id="W6q-Cw-3YC"/>
+                            <constraint firstItem="Kgi-dJ-7S3" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="coU-Si-4Hs"/>
+                            <constraint firstAttribute="trailing" secondItem="3Lg-q3-FDI" secondAttribute="trailing" id="vXB-Qc-hJk"/>
+                            <constraint firstItem="Wif-BT-iBC" firstAttribute="top" secondItem="H5H-nm-i4e" secondAttribute="bottom" constant="8" id="xkK-Km-SfG"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="52.671755725190835" y="374.64788732394368"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="startScreen" width="1500" height="1200"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
