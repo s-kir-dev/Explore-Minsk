@@ -23,6 +23,8 @@ class HomeViewController: UIViewController {
         }
     }
     
+    var selectedPlace: Place = Places.locations[0]
+    
     let searchController = UISearchController(searchResultsController: nil)
     
     override func viewDidLoad() {
@@ -39,6 +41,12 @@ class HomeViewController: UIViewController {
         recommendedView.delegate = self
         recommendedView.dataSource = self
         
+        seeAllButton.addTarget(self, action: #selector(seeAllButtonTapped), for: .touchUpInside)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        collectionView.reloadData()
     }
     
     @IBAction func segmentedValueChanged(_ sender: Any) {
@@ -56,6 +64,20 @@ class HomeViewController: UIViewController {
             sortedPlaces = Places.locations
         }
     }
+    
+    @objc func seeAllButtonTapped() {
+        performSegue(withIdentifier: "seeAll", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showPlace" {
+            let destinationVC = segue.destination as! PlaceViewController
+            destinationVC.place = selectedPlace
+        } else if segue.identifier == "seeAll" {
+            let destinationVC = segue.destination as! AllViewController
+            destinationVC.sortedPlaces = sortedPlaces
+        }
+    }
 
 
 }
@@ -64,8 +86,9 @@ extension HomeViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard collectionView == self.collectionView else { return }
         let place = sortedPlaces[indexPath.row]
+        selectedPlace = place
         
-        print("Нажат \(place.name)")
+        performSegue(withIdentifier: "showPlace", sender: self)
     }
 }
 
@@ -108,8 +131,8 @@ extension HomeViewController: UICollectionViewDataSource {
                 cell.favoriteAction = {
                     favorites.append(place)
                     cell.favoriteButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
-                    if favorites.count > 4 && !awards.contains("award3") {
-                        awards.append("award3")
+                    if favorites.count > 4 && !rewards.contains("award3") {
+                        rewards.append("award3")
                         let alert = UIAlertController(title: "Horray!", message: "You have achieved new medal in your profile!", preferredStyle: .alert)
                         let okAction = UIAlertAction(title: "Horray!", style: .default)
                         alert.addAction(okAction)
