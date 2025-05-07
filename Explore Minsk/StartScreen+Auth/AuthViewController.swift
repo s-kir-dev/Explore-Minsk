@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseDatabase
 import FirebaseAuth
 
 class AuthViewController: UIViewController {
@@ -63,7 +64,11 @@ class AuthViewController: UIViewController {
                         return
                     } else if let result = result {
                         userID = result.user.uid
-                        
+                        db.child("users").child(userID).setValue([
+                            "email": email,
+                            "password": password,
+                            "name": "Name"
+                        ])
                     }
                 }
             } else {

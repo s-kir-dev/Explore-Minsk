@@ -36,6 +36,7 @@ class HomeViewController: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         
+        recommendedView.delegate = self
         recommendedView.dataSource = self
         
     }
@@ -61,6 +62,7 @@ class HomeViewController: UIViewController {
 
 extension HomeViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard collectionView == self.collectionView else { return }
         let place = sortedPlaces[indexPath.row]
         
         print("Нажат \(place.name)")
@@ -119,6 +121,8 @@ extension HomeViewController: UICollectionViewDataSource {
             return cell
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! RecommendedCollectionViewCell
+            
+            cell.layer.cornerRadius = 20
             
             return cell
         }

@@ -117,34 +117,40 @@ struct Recommended: Codable {
 func countRating(place: Place, showReviews: Bool, completion: @escaping (String) -> Void) {
     var kolvo = 0
     var summa = 0
+    
     db.child("ratings").child(place.name).observeSingleEvent(of: .value, with: { snaphot in
         
-        let group = DispatchGroup()
         kolvo = Int(snaphot.childrenCount)
+        let group = DispatchGroup()
         
         for child in snaphot.children {
-            
             group.enter()
+            guard let userSnaphot = child as? DataSnapshot else { continue }
             
-            if let userID = child as? DataSnapshot {
-                db.child("ratings").child(place.name).child(userID.key).observeSingleEvent(of: .value, with: { snaphot in
-                    
-                    defer { group.leave() }
-                    
-                    guard let snaphotData = snaphot.value as? [String: Any], let myRate = snaphotData["myRate"] as? Int else { return }
-                    
-                    summa += myRate
-                })
-            }
+            db.child("ratings").child(place.name).child(userSnaphot.key).observeSingleEvent(of: .value, with: { snaphot in
+                
+                defer { group.leave() }
+                
+                guard let value = snaphot.value as? [String: Any], let myRate = value["myRate"] as? Int else { return }
+                summa += myRate
+            })
         }
         
         group.notify(queue: .main) {
-            let rating = Double(summa) / Double(kolvo)
-            let roundedRating = Double(rating*100).rounded()/100
-            if showReviews {
-                return completion("⭐️\(roundedRating) (\(kolvo)K Reviews)")
+            if kolvo > 0 {
+                let rating = Double(summa) / Double(kolvo)
+                let roundedRating = Double(rating*100).rounded()/100
+                if showReviews {
+                    completion("⭐️\(roundedRating) (\(kolvo)K Reviews)")
+                } else {
+                    completion("⭐️\(roundedRating)")
+                }
             } else {
-                return completion("⭐️\(roundedRating)")
+                if showReviews {
+                    completion("⭐️0 (0K Reviews)")
+                } else {
+                    completion("⭐️0")
+                }
             }
         }
     })
