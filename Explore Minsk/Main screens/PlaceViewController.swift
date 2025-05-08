@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class PlaceViewController: UIViewController {
 
@@ -93,7 +94,7 @@ class PlaceViewController: UIViewController {
     
     @objc func rateButtonTapped() {
         rateButton.isEnabled = false
-        db.child("ratings").child(place.name).child(userID).setValue([
+        db.child("ratings").child(place.name).child(Auth.auth().currentUser!.uid).setValue([
             "myRate": place.myRate
         ])
         countRating(place: place, showReviews: true) { rating in
@@ -116,7 +117,7 @@ class PlaceViewController: UIViewController {
     }
     
     func setMyRate() {
-        db.child("ratings").child(place.name).child(userID).observeSingleEvent(of: .value, with: { snaphot in
+        db.child("ratings").child(place.name).child(Auth.auth().currentUser!.uid).observeSingleEvent(of: .value, with: { snaphot in
             if let value = snaphot.value as? [String: Any] {
                 if let myRate = value["myRate"] as? Int {
                     self.place.myRate = myRate

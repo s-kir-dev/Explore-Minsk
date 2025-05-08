@@ -63,8 +63,7 @@ class AuthViewController: UIViewController {
                         print("Error creating user: \(error)")
                         return
                     } else if let result = result {
-                        userID = result.user.uid
-                        db.child("users").child(userID).setValue([
+                        db.child("users").child(Auth.auth().currentUser!.uid).setValue([
                             "email": email,
                             "password": password,
                             "name": "Name"

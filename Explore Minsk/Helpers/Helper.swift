@@ -12,8 +12,6 @@ import FirebaseAuth
 
 let db = Database.database().reference()
 
-var userID = Auth.auth().currentUser!.uid
-
 let storyboard = UIStoryboard(name: "Main", bundle: nil)
 
 let startVC = storyboard.instantiateViewController(withIdentifier: "startVC")
@@ -96,11 +94,11 @@ struct Places: Codable {
 var favorites = [Place]()
 
 func uploadFavorites() {
-    UserDefaults.standard.set(try? JSONEncoder().encode(favorites), forKey: "favorites-\(userID)")
+    UserDefaults.standard.set(try? JSONEncoder().encode(favorites), forKey: "favorites-\(Auth.auth().currentUser!.uid)")
 }
 
 func downloadFavorites() {
-    if let savedData = UserDefaults.standard.data(forKey: "favorites-\(userID)") {
+    if let savedData = UserDefaults.standard.data(forKey: "favorites-\(Auth.auth().currentUser!.uid)") {
         favorites = try! JSONDecoder().decode([Place].self, from: savedData)
     }
 }
