@@ -272,21 +272,98 @@ Vacation</string>
             </objects>
             <point key="canvasLocation" x="790" y="4"/>
         </scene>
-        <!--View Controller-->
+        <!--Favorites View Controller-->
         <scene sceneID="3mf-aI-7Kf">
             <objects>
-                <viewController id="VEz-d4-Np9" sceneMemberID="viewController">
+                <viewController id="VEz-d4-Np9" customClass="FavoritesViewController" customModule="Explore_Minsk" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vOM-0M-uqN">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K6T-1X-hP1">
+                                <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                                <items>
+                                    <navigationItem title="Favorites" id="KMy-HZ-iny"/>
+                                </items>
+                            </navigationBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="MfN-4M-jGI">
+                                <rect key="frame" x="0.0" y="103" width="393" height="666"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="150" id="cLg-Gj-p1B" customClass="FavoritesTableViewCell" customModule="Explore_Minsk" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="50" width="393" height="150"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cLg-Gj-p1B" id="Nfd-KC-mAJ">
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="150"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="гранд" id="v88-Rk-1fZ">
+                                                    <rect key="frame" x="20" y="11" width="100" height="128"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="100" id="KXu-hv-Ioq"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Union Coffee" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="aL0-LG-N4l">
+                                                    <rect key="frame" x="128" y="36" width="237" height="35"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="35" id="Bos-Oo-Pd8"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="MalayalamSangamMN-Bold" family="Malayalam Sangam MN" pointSize="20"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Food" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="63L-jj-EWc">
+                                                    <rect key="frame" x="128" y="79" width="237" height="35"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="35" id="eqR-bd-HLZ"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="MalayalamSangamMN" family="Malayalam Sangam MN" pointSize="20"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="v88-Rk-1fZ" firstAttribute="bottom" secondItem="Nfd-KC-mAJ" secondAttribute="bottomMargin" id="2Cz-fn-IZH"/>
+                                                <constraint firstItem="aL0-LG-N4l" firstAttribute="top" secondItem="Nfd-KC-mAJ" secondAttribute="topMargin" constant="25" id="8yG-6K-YZm"/>
+                                                <constraint firstItem="aL0-LG-N4l" firstAttribute="leading" secondItem="v88-Rk-1fZ" secondAttribute="trailing" constant="8" id="MFl-4i-OVK"/>
+                                                <constraint firstItem="63L-jj-EWc" firstAttribute="top" secondItem="aL0-LG-N4l" secondAttribute="bottom" constant="8" id="Yxj-bJ-cHl"/>
+                                                <constraint firstItem="63L-jj-EWc" firstAttribute="leading" secondItem="v88-Rk-1fZ" secondAttribute="trailing" constant="8" id="a2C-i7-FID"/>
+                                                <constraint firstItem="v88-Rk-1fZ" firstAttribute="top" secondItem="Nfd-KC-mAJ" secondAttribute="topMargin" id="jWE-Et-FLM"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="63L-jj-EWc" secondAttribute="trailing" constant="8" id="p6n-KQ-hBw"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="aL0-LG-N4l" secondAttribute="trailing" constant="8" id="ugJ-cC-349"/>
+                                                <constraint firstItem="v88-Rk-1fZ" firstAttribute="leading" secondItem="Nfd-KC-mAJ" secondAttribute="leadingMargin" id="v3S-rF-azo"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="placeImage" destination="v88-Rk-1fZ" id="Nbx-G5-4WG"/>
+                                            <outlet property="placeName" destination="aL0-LG-N4l" id="ufd-fy-2Sb"/>
+                                            <outlet property="placeType" destination="63L-jj-EWc" id="BaX-mT-tQd"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="wz5-8A-6qh"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="MfN-4M-jGI" firstAttribute="trailing" secondItem="wz5-8A-6qh" secondAttribute="trailing" id="LH0-qy-9Mx"/>
+                            <constraint firstItem="MfN-4M-jGI" firstAttribute="leading" secondItem="wz5-8A-6qh" secondAttribute="leading" id="RYk-Y5-kw4"/>
+                            <constraint firstItem="K6T-1X-hP1" firstAttribute="leading" secondItem="wz5-8A-6qh" secondAttribute="leading" id="Yx8-9X-81K"/>
+                            <constraint firstItem="K6T-1X-hP1" firstAttribute="top" secondItem="wz5-8A-6qh" secondAttribute="top" id="baC-jT-MBu"/>
+                            <constraint firstItem="MfN-4M-jGI" firstAttribute="top" secondItem="K6T-1X-hP1" secondAttribute="bottom" id="g15-yd-Wh9"/>
+                            <constraint firstItem="K6T-1X-hP1" firstAttribute="trailing" secondItem="wz5-8A-6qh" secondAttribute="trailing" id="gkS-2R-uhp"/>
+                            <constraint firstItem="wz5-8A-6qh" firstAttribute="bottom" secondItem="MfN-4M-jGI" secondAttribute="bottom" id="whl-Pg-e2I"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="heart" catalog="system" id="q2P-ZU-WYo"/>
+                    <connections>
+                        <outlet property="tableView" destination="MfN-4M-jGI" id="9FO-fh-HDX"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YKK-vE-UHF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2485" y="-327"/>
+            <point key="canvasLocation" x="2484.7328244274809" y="-327.46478873239437"/>
         </scene>
         <!--Explore Minsk-->
         <scene sceneID="fer-Um-0RM">
@@ -685,28 +762,27 @@ Vacation</string>
                                 <rect key="frame" x="0.0" y="103" width="393" height="666"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="z0b-FS-Uf0">
-                                    <size key="itemSize" width="175" height="245"/>
+                                    <size key="itemSize" width="190" height="245"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="hHH-pT-5eJ" customClass="PlaceCollectionViewCell" customModule="Explore_Minsk" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="175" height="245"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="190" height="245"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="MsL-oI-C1z">
-                                            <rect key="frame" x="0.0" y="0.0" width="175" height="245"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="190" height="245"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="троицкое" id="Mgu-8N-3Ze">
-                                                    <rect key="frame" x="0.0" y="0.0" width="196" height="253"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="190" height="245"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Troitskoe suburb" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="Hnv-zD-px8">
-                                                    <rect key="frame" x="8" y="151" width="160" height="35"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Troitskoe suburb" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="5" translatesAutoresizingMaskIntoConstraints="NO" id="Hnv-zD-px8">
+                                                    <rect key="frame" x="8" y="151" width="157" height="35"/>
                                                     <color key="backgroundColor" red="0.30196078430000001" green="0.33725490200000002" blue="0.32156862749999998" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="160" id="1A7-IO-gFu"/>
                                                         <constraint firstAttribute="height" constant="35" id="WmM-Xo-D0d"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="MalayalamSangamMN" family="Malayalam Sangam MN" pointSize="20"/>
@@ -714,18 +790,17 @@ Vacation</string>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="⭐️4.6" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="trs-jc-FXq">
-                                                    <rect key="frame" x="8" y="194" width="85" height="35"/>
+                                                    <rect key="frame" x="8" y="194" width="89" height="35"/>
                                                     <color key="backgroundColor" red="0.30196078430000001" green="0.33725490200000002" blue="0.32156862749999998" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="35" id="Zot-Fk-3BE"/>
-                                                        <constraint firstAttribute="width" constant="85" id="eVL-pD-HGc"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="MalayalamSangamMN" family="Malayalam Sangam MN" pointSize="20"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5nS-hp-R0P">
-                                                    <rect key="frame" x="132" y="194" width="35" height="35"/>
+                                                    <rect key="frame" x="147" y="194" width="35" height="35"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="35" id="W0Y-eo-oLb"/>
                                                         <constraint firstAttribute="width" secondItem="5nS-hp-R0P" secondAttribute="height" multiplier="1:1" id="eLi-0x-xTr"/>
@@ -746,14 +821,16 @@ Vacation</string>
                                                 <constraint firstItem="trs-jc-FXq" firstAttribute="top" secondItem="Hnv-zD-px8" secondAttribute="bottom" constant="8" id="2cg-rN-HjE"/>
                                                 <constraint firstAttribute="trailing" secondItem="5nS-hp-R0P" secondAttribute="trailing" constant="8" id="AJk-HZ-Izm"/>
                                                 <constraint firstItem="Mgu-8N-3Ze" firstAttribute="leading" secondItem="MsL-oI-C1z" secondAttribute="leading" id="JZ8-yO-SId"/>
+                                                <constraint firstAttribute="trailing" secondItem="Hnv-zD-px8" secondAttribute="trailing" constant="25" id="KAa-hn-aEF"/>
                                                 <constraint firstItem="trs-jc-FXq" firstAttribute="leading" secondItem="MsL-oI-C1z" secondAttribute="leading" constant="8" id="NcY-mw-w6v"/>
                                                 <constraint firstAttribute="bottom" secondItem="5nS-hp-R0P" secondAttribute="bottom" constant="16" id="Wbi-by-3Bo"/>
                                                 <constraint firstAttribute="bottom" secondItem="trs-jc-FXq" secondAttribute="bottom" constant="16" id="fjq-Pm-dh6"/>
                                                 <constraint firstItem="Hnv-zD-px8" firstAttribute="leading" secondItem="MsL-oI-C1z" secondAttribute="leading" constant="8" id="qgx-Qs-5yq"/>
                                                 <constraint firstItem="Mgu-8N-3Ze" firstAttribute="top" secondItem="MsL-oI-C1z" secondAttribute="top" id="vy6-ea-PCU"/>
+                                                <constraint firstItem="5nS-hp-R0P" firstAttribute="leading" secondItem="trs-jc-FXq" secondAttribute="trailing" constant="50" id="yfz-wr-xEU"/>
                                             </constraints>
                                         </collectionViewCellContentView>
-                                        <size key="customSize" width="175" height="245"/>
+                                        <size key="customSize" width="190" height="245"/>
                                         <connections>
                                             <outlet property="favoriteButton" destination="5nS-hp-R0P" id="h2r-8z-zzx"/>
                                             <outlet property="placeImage" destination="Mgu-8N-3Ze" id="vWm-iZ-b2j"/>
@@ -1252,6 +1329,7 @@ Vacation</string>
         <image name="startScreen" width="1500" height="1200"/>
         <image name="wifi" catalog="system" width="128" height="90"/>
         <image name="вокзал" width="2560" height="1828"/>
+        <image name="гранд" width="765" height="1020"/>
         <image name="троицкое" width="900" height="500"/>
         <image name="эмбер" width="1360" height="906"/>
         <systemColor name="systemBackgroundColor">
