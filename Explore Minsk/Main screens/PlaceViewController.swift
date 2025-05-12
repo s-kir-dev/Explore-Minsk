@@ -66,8 +66,9 @@ class PlaceViewController: UIViewController {
         if favorites.contains(place) {
             favorites.remove(at: favorites.firstIndex(of: place)!)
             favoriteButton.setImage(UIImage(systemName: "heart"), for: .normal)
-            if favorites.count > 4 && !rewards.contains("award3") {
-                rewards.append("award3")
+            if favorites.count > 4 && !rewards.contains("wanderList") {
+                rewards.append("wanderList")
+                UserDefaults.standard.set(rewards, forKey: "rewards-\(Auth.auth().currentUser!.uid)")
                 let alert = UIAlertController(title: "Horray!", message: "You have achieved new medal in your profile!", preferredStyle: .alert)
                 let okAction = UIAlertAction(title: "Horray!", style: .default)
                 alert.addAction(okAction)

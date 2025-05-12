@@ -164,3 +164,22 @@ func countRating(place: Place, showReviews: Bool, completion: @escaping (String)
 
 
 var rewards: [String] = []
+
+
+func loadImage() -> UIImage {
+    guard let user = Auth.auth().currentUser else {
+        print("Нет пользователя")
+        return UIImage(systemName: "person.crop.circle")!
+    }
+    guard let directory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
+        print("Нет директории")
+        return UIImage(systemName: "person.crop.circle")!
+    }
+    
+    let path = directory.appendingPathComponent("image-\(user.uid).png")
+    guard FileManager.default.fileExists(atPath: path.path()), let data = try? Data(contentsOf: path), let image = UIImage(data: data) else {
+        print("Нет данных картинки")
+        return UIImage(systemName: "person.crop.circle")!
+    }
+    return image
+}

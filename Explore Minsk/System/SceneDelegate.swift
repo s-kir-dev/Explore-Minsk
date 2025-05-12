@@ -18,11 +18,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let window = UIWindow(windowScene: windowScene)
         
-        if Auth.auth().currentUser != nil {
-            window.rootViewController = tabBar
-            downloadFavorites()
-        } else {
-            window.rootViewController = startVC
+        Auth.auth().addStateDidChangeListener { auth, user in
+            if user != nil {
+                tabBar.selectedIndex = 0
+                window.rootViewController = tabBar
+                rewards = UserDefaults.standard.object(forKey: "rewards-\(user!.uid)") as? [String] ?? []
+                downloadFavorites()
+            } else {
+                window.rootViewController = startVC
+            }
         }
         
         self.window = window

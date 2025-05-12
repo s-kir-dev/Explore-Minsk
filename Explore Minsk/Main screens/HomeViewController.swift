@@ -131,8 +131,9 @@ extension HomeViewController: UICollectionViewDataSource {
                 cell.favoriteAction = {
                     favorites.append(place)
                     cell.favoriteButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
-                    if favorites.count > 4 && !rewards.contains("award3") {
-                        rewards.append("award3")
+                    if favorites.count > 4 && !rewards.contains("wanderList") {
+                        rewards.append("wanderList")
+                        UserDefaults.standard.set(rewards, forKey: "rewards-\(Auth.auth().currentUser!.uid)")
                         let alert = UIAlertController(title: "Horray!", message: "You have achieved new medal in your profile!", preferredStyle: .alert)
                         let okAction = UIAlertAction(title: "Horray!", style: .default)
                         alert.addAction(okAction)
