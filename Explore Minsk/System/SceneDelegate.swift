@@ -18,6 +18,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let window = UIWindow(windowScene: windowScene)
         
+        let savedTheme = UIUserInterfaceStyle(rawValue: UserDefaults.standard.integer(forKey: "AppTheme")) ?? .unspecified
+        window.overrideUserInterfaceStyle = savedTheme
+        
         Auth.auth().addStateDidChangeListener { auth, user in
             if user != nil {
                 tabBar.selectedIndex = 0

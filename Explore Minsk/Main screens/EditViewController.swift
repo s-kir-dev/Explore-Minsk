@@ -32,6 +32,9 @@ class EditViewController: UIViewController {
         imagePicker.delegate = self
         imagePicker.allowsEditing = true
         
+        nameTextField.delegate = self
+        emailTextField.delegate = self
+        
         profileImage.image = image
         nameTextField.text = name
         emailTextField.text = email
