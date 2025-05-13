@@ -23,6 +23,14 @@ class SettingsViewController: UIViewController {
         languageView.layer.borderColor = UIColor.systemGray.cgColor
         languageView.layer.borderWidth = 1
         languageView.layer.cornerRadius = 5
+        
+        themeView.layer.borderColor = UIColor.systemGray.cgColor
+        themeView.layer.borderWidth = 1
+        themeView.layer.cornerRadius = 5
+        
+        aboutAppView.layer.borderColor = UIColor.systemGray.cgColor
+        aboutAppView.layer.borderWidth = 1
+        aboutAppView.layer.cornerRadius = 5
 
         setupLanguageMenu()
 
